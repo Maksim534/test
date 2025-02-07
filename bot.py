@@ -27,6 +27,16 @@ async def admins(message: types.Message):
     else: 
         await message. answer('Вы хуесос без админки')
 
+@dp.message_handler(commands=['lol'])
+async def lol(message: types.Message):
+    Keyboard = types.InlineKeyboardMarkup()
+    Keboard.add(types.InlineKeyboardButton(text='лолошный лол?', callback_data = 'mda'))
+    await message.anwer('ЕТА ЧО ТАКОЕ??', reply_markup = Keyboard)
+
+@dp.callback_query_handler(text='mda')
+async def mda(call: types.CallbackQuery):
+    await call.message.answer('ТУДА СЮДА И БАГАЧЬ ЕЕЕЕ')
+
 
 
 @dp.message_handler()

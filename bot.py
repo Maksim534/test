@@ -12,6 +12,12 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
     balance TEXT
 )''')
 
+async def getbalance(message):
+    user_id = message.from_user.id
+    cursor.execute('SELECT name, balance FROM users WHERE user_id = ?', (user_id,))
+    i = cursor.fetchone()
+    name, balance = i
+    return name, balance
 
 
 ADMIN = ['6888643375']
@@ -40,8 +46,7 @@ async def process_help_command(message: types.Message):
 
 @dp.message_handler(commands=['balance'])
 async def balance(message: types.Message):
-    user_id = message.from_user.id
-    balanc = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    name, balance = await getbalance(message)
     balance = '{:,}'.format(balanc).replace(',', '.')
     await message.answer(f'Ваш баланс {balance}')
 

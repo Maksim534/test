@@ -19,16 +19,20 @@ async def process_help_command(message: types.Message):
     await message.answer("Напиши мне что-нибудь, и я отпрпавлю этот текст тебе в ответ!")
 
 
-@dp.message_handler()
-async def echo_message(msg: types.Message):
-    await bot.send_message(msg.from_user.id, msg.text)
-
 @dp.message_handler(commands=['adm'])
 async def admins(message: types.Message):
     if from_user.id == ADMIN:
         await message.answer('Вы админ')
     else: 
         await message. answer('Вы хуесос')
+
+
+
+@dp.message_handler()
+async def echo_message(msg: types.Message):
+    await bot.send_message(msg.from_user.id, msg.text)
+
+
 
 
 if __name__ == '__main__':

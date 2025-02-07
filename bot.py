@@ -23,9 +23,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def reg_user(user_id: int) -> None:
-    ex = cursor.execute('SELECT name FROM users WHERE user_id = ?', (user_id,)).fetchone()
-    if not ex:
-        cursor.execute('INSERT INTO users (user_id, name, balance)' 'VALUES (?, ?, ?)', (user_id, 'Игрок', cfg.start_money))
+        cursor.execute('INSERT INTO users (user_id, name, balance)' 'VALUES (?, ?, ?)', (user_id, 'Игрок', 10000))
         conn.commit()
     await message.reply("Привет!\nНапиши мне что-нибудь!")
 

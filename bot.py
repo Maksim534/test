@@ -38,6 +38,11 @@ async def register_users(message):
 async def process_help_command(message: types.Message):
     await message.answer("Напиши мне что-нибудь, и я отпрпавлю этот текст тебе в ответ!")
 
+@dp.message_handler(comamnds=['balance'])
+async def balance(message: types.Message):
+    balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    await message.answer(f'Ваш баланс {balance}')
+
 
 @dp.message_handler(commands=['adm'])
 async def admins(message: types.Message):

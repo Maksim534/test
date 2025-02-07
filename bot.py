@@ -25,7 +25,7 @@ async def admins(message: types.Message):
     if user_id not in ADMIN:
         await message.answer('Вы админ')
     else: 
-        await message. answer('Вы хуесос')
+        await message. answer('Вы хуесос без админки')
 
 
 

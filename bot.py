@@ -36,7 +36,7 @@ async def lol(message: types.Message):
 
 @dp.callback_query_handler(text='mda')
 async def mda(call: types.CallbackQuery):
-    await call.message.answer(text = 'ТУДА СЮДА И БАГАЧЬ ЕЕЕЕ', show_alert=True)
+    await call.answer(text = 'ТУДА СЮДА И БАГАЧЬ ЕЕЕЕ', show_alert=True)
 
 
 

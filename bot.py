@@ -24,7 +24,7 @@ async def echo_message(msg: types.Message):
     await bot.send_message(msg.from_user.id, msg.text)
 
 @dp.message_handler(commands=['adm'])
-async def admins(msg: types.Message):
+async def admins(message: types.Message):
     if from_user.id == ADMIN:
         await message.answer('Вы админ')
     else: 

@@ -42,6 +42,7 @@ async def process_help_command(message: types.Message):
 async def balance(message: types.Message):
     user_id = message.from_user.id
     balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    balance = '{:,}'.format(balance).replace(',', '.')
     await message.answer(f'Ваш баланс {balance}')
 
 

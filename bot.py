@@ -21,7 +21,8 @@ async def process_help_command(message: types.Message):
 
 @dp.message_handler(commands=['adm'])
 async def admins(message: types.Message):
-    if from_user.id == ADMIN:
+    user_id = message.from_user.id
+    if user_id not in ADMIN:
         await message.answer('Вы админ')
     else: 
         await message. answer('Вы хуесос')

@@ -1,6 +1,17 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+import sqlite3 
+
+conn = sqlite3.connect('users.db')
+cursor = conn.cursor()
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS users (
+    user_id INTEGER,
+    name TEXT,
+    balance TEXT,
+)''')
+
 
 
 ADMIN = ['6888643375']
@@ -11,7 +22,11 @@ dp = Dispatcher(bot)
 
 
 @dp.message_handler(commands=['start'])
-async def process_start_command(message: types.Message):
+async def reg_user(user_id: int) -> None:
+    ex = cursor.execute('SELECT name FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    if not ex:
+        cursor.execute('INSERT INTO users (user_id, name, balance)' 'VALUES (?, ?, ?)', (user_id, 'Игрок', cfg.start_money))
+        conn.commit()
     await message.reply("Привет!\nНапиши мне что-нибудь!")
 
 

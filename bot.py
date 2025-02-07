@@ -25,7 +25,7 @@ dp = Dispatcher(bot)
 async def reg_user(user_id: int) -> None:
         cursor.execute('INSERT INTO users (user_id, name, balance)' 'VALUES (?, ?, ?)', (user_id, 'Игрок', 10000))
         conn.commit()
-    await message.reply("Привет!\nНапиши мне что-нибудь!")
+        await message.reply("Привет!\nНапиши мне что-нибудь!")
 
 
 @dp.message_handler(commands=['help'])

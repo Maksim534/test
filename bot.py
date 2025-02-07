@@ -2,7 +2,7 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
-
+ADMIN = ['6888643375']
 
 
 bot = Bot(token='7692626473:AAEgJxf5PS_RG0_geBIqP3V8UU1uKlzmwl8')
@@ -22,6 +22,13 @@ async def process_help_command(message: types.Message):
 @dp.message_handler()
 async def echo_message(msg: types.Message):
     await bot.send_message(msg.from_user.id, msg.text)
+
+@dp.message_handler()
+async def admins(msg: types.Message):
+    if from_user.id == ADMIN:
+        await message.answer('Вы админ')
+    else: 
+        await message. answer('Вы хуесос')
 
 
 if __name__ == '__main__':

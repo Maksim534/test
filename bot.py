@@ -48,7 +48,7 @@ async def process_help_command(message: types.Message):
 async def balance(message: types.Message):
     name, balance = await getbalance(message)
     balance = '{:,}'.format(balance).replace(',', '.')
-    await message.answer(f'Ваш баланс {balance}')
+    await message.answer(f'Ваш баланс {balance}', parse_mode='html')
 
 
 @dp.message_handler(commands=['adm'])

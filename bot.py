@@ -31,7 +31,7 @@ async def admins(message: types.Message):
 @dp.message_handler(commands=['lol'])
 async def lol(message: types.Message):
     Keyboard = types.InlineKeyboardMarkup()
-    Keboard.add(types.InlineKeyboardButton(text='лолошный лол?', callback_data = 'mda'))
+    Keyboard.add(types.InlineKeyboardButton(text='лолошный лол?', callback_data = 'mda'))
     await message.anwer('ЕТА ЧО ТАКОЕ??', reply_markup = Keyboard)
 
 @dp.callback_query_handler(text='mda')

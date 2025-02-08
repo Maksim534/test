@@ -12,6 +12,11 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
     balance TEXT
 )''')
 
+async def clickal(message):
+    user_id = message.from_user.id
+    cursor.execute('UPDATE users SELECT balance + 1 WHERE user_id = ?, (user_id,))
+                   
+
 async def getbalance(message):
     user_id = message.from_user.id
     cursor.execute('SELECT name, balance FROM users WHERE user_id = ?', (user_id,))
@@ -48,6 +53,11 @@ async def process_help_command(message: types.Message):
 async def balance(message: types.Message):
     name, balance = await getbalance(message)
     await message.answer(f'Ваш баланс {balance}', parse_mode='html')
+
+@dp.message_handler(commands=['click'])
+async def click(message: types.Message):
+    await clickal(message.from_user.id):
+    await message.answer(f'Вы заработали + 1 рубаааль', parse_mode='html')
 
 
 @dp.message_handler(commands=['adm'])

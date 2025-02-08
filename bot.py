@@ -14,7 +14,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
 
 async def clickal(message):
     user_id = message.from_user.id
-    cursor.execute('UPDATE users SELECT balance + 1 WHERE user_id = ?, (user_id,))
+    cursor.execute(f'UPDATE users SELECT balance + 1 WHERE user_id = ?, (user_id,))
                    
 
 async def getbalance(message):

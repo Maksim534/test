@@ -55,7 +55,7 @@ async def balance(message: types.Message):
 @dp.message_handler(commands=['click'])
 async def click(message: types.Message):
     user_id = message.from_user.id
-    cursor.execute('UPDATE users FROM balance = {balance + 1} WHERE user_id', (user_id,))
+    cursor.execute('UPDATE users SET balance = {balance + 1} WHERE user_id', (user_id,))
     await message.answer(f'Вы заработали + 1 рубаааль', parse_mode='html')
 
 

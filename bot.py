@@ -56,7 +56,7 @@ async def balance(message: types.Message):
 
 @dp.message_handler(commands=['click'])
 async def click(message: types.Message):
-    await clickal(message.from_user.id):
+    await clickal(message.from_user.id)
     await message.answer(f'Вы заработали + 1 рубаааль', parse_mode='html')
 
 
